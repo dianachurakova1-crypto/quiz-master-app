@@ -1,0 +1,15 @@
+{
+  "name": "quiz-master-app",
+  "version": "1.0.0",
+  "description": "Quiz Master - веб-приложение для проведения квизов",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.5.4",
+    "uuid": "^9.0.0"
+  }
+}

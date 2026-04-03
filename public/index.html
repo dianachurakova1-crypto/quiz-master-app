@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vикторинс - Квизы в реальном времени</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<div class="container" id="app">
+    <!-- Страница регистрации -->
+    <div id="registerScreen">
+        <h1 style="text-align:center">Vикторинс - Регистрация</h1>
+        <div class="card">
+            <input type="text" id="regNickname" placeholder="Никнейм">
+            <input type="email" id="regEmail" placeholder="Электронная почта">
+            <div class="password-container">
+                <input type="password" id="regPassword" placeholder="Пароль">
+                <button class="toggle-password" data-target="regPassword">👁</button>
+            </div>
+            <button class="btn btn-success" id="registerBtn">Зарегистрироваться</button>
+            <div class="auth-link" id="goToLoginLink">Уже есть аккаунт? Войти</div>
+        </div>
+    </div>
+
+    <!-- Страница входа -->
+    <div id="loginScreen" class="hide">
+        <h1 style="text-align:center">Vикторинс - Вход</h1>
+        <div class="card">
+            <input type="email" id="loginEmail" placeholder="Электронная почта">
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Пароль">
+                <button class="toggle-password" data-target="loginPassword">👁</button>
+            </div>
+            <button class="btn btn-success" id="loginBtn">Войти</button>
+            <div class="auth-link" id="goToRegisterLink">Нет аккаунта? Зарегистрироваться</div>
+        </div>
+    </div>
+
+    <!-- Главный экран (после входа) -->
+    <div id="mainScreen" class="hide">
+        <div class="nav-bar">
+            <h2>Vикторинс</h2>
+            <div class="user-info">
+                <span id="mainUsername"></span>
+                <button class="round-btn" id="logoutFromMainBtn">Выйти</button>
+            </div>
+        </div>
+        
+        <div class="mode-buttons">
+            <button class="btn btn-success btn-large" id="createModeBtn">Создать квиз</button>
+            <button class="btn btn-primary btn-large" id="joinModeBtn" style="background: #2f855a;">Присоединиться к квизу</button>
+        </div>
+        
+        <div class="two-columns">
+            <div class="card">
+                <h3>Мои квизы</h3>
+                <div id="myQuizzesList">Загрузка...</div>
+            </div>
+            
+            <div class="card">
+                <h3>История участия</h3>
+                <div id="participationHistory">Загрузка...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Экран создания квиза -->
+    <div id="organizerScreen" class="hide">
+        <div class="nav-bar">
+            <h2>Создать новый квиз</h2>
+            <button class="round-btn" id="backToMainFromCreateBtn">На главную</button>
+        </div>
+        <input type="text" id="quizTitle" placeholder="Название квиза" value="Мой супер квиз">
+        <div id="questionsList"></div>
+        <button class="btn" id="addQuestionBtn">+ Добавить вопрос</button>
+        <button class="btn btn-success" id="saveQuizBtn">Сохранить квиз</button>
+    </div>
+
+    <!-- Лобби организатора -->
+    <div id="lobbyScreen" class="hide">
+        <div class="nav-bar">
+            <h2>Лобби: <span id="lobbyQuizTitle"></span></h2>
+            <button class="round-btn" id="exitLobbyBtn">На главную</button>
+        </div>
+        <p>Код комнаты: <strong id="roomCodeDisplay"></strong></p>
+        <p>Отправь этот код участникам для подключения</p>
+        <div class="leaderboard">
+            <h3>Участники</h3>
+            <div id="playersList"></div>
+        </div>
+        <button class="btn btn-success" id="startGameBtn">Начать игру</button>
+    </div>
+
+    <!-- Экран присоединения -->
+    <div id="joinScreen" class="hide">
+        <div class="nav-bar">
+            <h2>Присоединиться к квизу</h2>
+            <button class="round-btn" id="backToMainFromJoinBtn">На главную</button>
+        </div>
+        <div class="card">
+            <input type="text" id="joinRoomCode" placeholder="Введите код комнаты">
+            <input type="text" id="playerName" placeholder="Ваше имя">
+            <button class="btn btn-success" id="joinBtn">Подключиться</button>
+        </div>
+    </div>
+
+    <!-- Игровой экран -->
+    <div id="gameScreen" class="hide">
+        <div class="nav-bar">
+            <h2 id="gameTitle"></h2>
+            <span id="roleBadge" style="background: #edf2f7; padding: 8px 16px; border-radius: 40px;"></span>
+        </div>
+        <div id="questionArea">
+            <div class="waiting-message">Ожидание начала игры...</div>
+        </div>
+        <div id="organizerControls" class="hide" style="margin-top: 20px; text-align: center;">
+            <button class="btn btn-success" id="nextQuestionBtn">Следующий вопрос</button>
+        </div>
+        <div class="leaderboard" style="margin-top:20px">
+            <h3>Лидерборд</h3>
+            <div id="gamePlayersList"></div>
+        </div>
+    </div>
+</div>
+
+<div id="feedback" class="feedback-message hide"></div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
