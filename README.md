@@ -2,9 +2,9 @@
 
 Платформа для создания и проведения квизов с поддержкой комнат, WebSocket и автоматическим подсчётом баллов.
 
-Прототип: https://www.figma.com/design/VrkTwWv7DCgBTBt5u5u8wC/%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF?node-id=0-1&t=JyH93ZY3YxWQMZym-1 
-Репозиторий: https://github.com/dianachurakova1-crypto/quiz-master-app
 ---
+Прототип: https://www.figma.com/design/VrkTwWv7DCgBTBt5u5u8wC/%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B%D0%B9-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF?node-id=0-1&t=JyH93ZY3YxWQMZym-1 \
+Репозиторий: https://github.com/dianachurakova1-crypto/quiz-master-app
 
 ## Что умеет приложение
 
@@ -47,16 +47,18 @@
 ---
 
 ## Структура проекта
+```
 quiz-master-app/
-├── server.js #(Node.js + Socket.IO)
+├── server.js              # (Node.js + Socket.IO)
 ├── public/
-│ ├── index.html #Все HTML-страницы
-│ ├── css/
-│ │ └── style.css #Все стили
-│ └── js/
-│ └── app.js #Весь клиентский JavaScript
-├── package.json #Зависимости проекта
-└── README.md #Этот файл (README.md)
+│   ├── index.html         # Все HTML-страницы
+│   ├── css/
+│   │   └── style.css      # Все стили
+│   └── js/
+│       └── app.js         # Весь клиентский JavaScript
+├── package.json           # Зависимости проекта
+└── README.md              # Этот файл (README.md)
+```
 
 ## Как играть
 
