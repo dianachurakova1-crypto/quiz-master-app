@@ -471,7 +471,6 @@ select {
     animation: fadeIn 0.2s ease;
 }
 
-/* Стили для выпадающего списка истории проведённых квизов */
 .game-history-dropdown {
     background: #f7fafc;
     border-radius: 16px;
